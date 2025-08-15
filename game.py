@@ -1,9 +1,8 @@
-# Example file showing a circle moving on screen
 import pygame
 
 # pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1900, 1080))
+screen = pygame.display.set_mode((1500, 900))
 clock = pygame.time.Clock()
 running = True
 dt = 0
@@ -39,15 +38,11 @@ while running:
     changex, changey = pygame.mouse.get_pos()
     player_pos.x = 1.75 * (1500 - changex)
     player_pos.y = 1.75 * (1080 - changey)
-    
-    if keys[pygame.K_w]:
-        print(str(changex) + "|" + str(changey))
-    if keys[pygame.K_s]:
-        player_pos.y -= 300 * dt
-    if keys[pygame.K_a]:
-        player_pos.x += 300 * dt
-    if keys[pygame.K_d]:
-        player_pos.x -= 300 * dt
 
     pygame.display.flip()
     dt = clock.tick(120) / 1000
+
+    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            mouse_pos = event.pos
+            if table_rect.collidepoint(mouse_pos):
+                print("Table clicked!")
